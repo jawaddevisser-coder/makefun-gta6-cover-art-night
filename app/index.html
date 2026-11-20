@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice After Dark — GTA 6-style cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>VICE <span>AFTER DARK</span></h1>
+    <p class="lede">One photo, one poster. Pick a shot of Leonida after dark, write your words, and export a cover.</p>
+
+    <fieldset>
+      <legend>Photo</legend>
+      <label class="file">Hero photo
+        <input id="photo" type="file" accept="image/*">
+      </label>
+      <div class="row">
+        <button id="sampleSunset" type="button">Sample: Sunset Drive</button>
+        <button id="sampleNeon" type="button">Sample: Neon Street</button>
+      </div>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.01" value="1"></label>
+      <p class="hint">Drag the photo inside the preview to pan it.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Words</legend>
+      <label>Title <input id="title" type="text" maxlength="30" value="NIGHT DRIVE"></label>
+      <label>Neon word <input id="accent" type="text" maxlength="14" value="VICE"></label>
+      <label>Tagline <input id="tagline" type="text" maxlength="40" value="welcome to leonida"></label>
+      <label>Sticker <input id="sticker" type="text" maxlength="14" value="VICE CITY"></label>
+      <label>Title position <span id="titlePos" class="segment" role="group" aria-label="Title position"></span></label>
+      <label>Title style <span id="titleStyle" class="segment" role="group" aria-label="Title style"></span></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Inset snapshot</legend>
+      <label class="check"><input id="insetOn" type="checkbox"> Add a tilted snapshot tile</label>
+      <div id="insetControls" class="off">
+        <label class="file">Snapshot photo
+          <input id="insetPhoto" type="file" accept="image/*">
+        </label>
+        <div class="row">
+          <button id="insetSample" type="button">Use Neon Street</button>
+        </div>
+        <label>Corner
+          <select id="insetCorner">
+            <option value="br" selected>Bottom right</option>
+            <option value="bl">Bottom left</option>
+            <option value="tr">Top right</option>
+            <option value="tl">Top left</option>
+          </select>
+        </label>
+        <label>Tilt <input id="insetTilt" type="range" min="-14" max="14" step="1" value="-6"></label>
+        <label>Zoom <input id="insetZoom" type="range" min="1" max="2" step="0.01" value="1"></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Grade</legend>
+      <div id="grades" class="grades" role="group" aria-label="Colour grade"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Effects</legend>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="glow" type="checkbox" checked> Neon glow</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Preview size</legend>
+      <span id="sizeSeg" class="segment" role="group" aria-label="Preview size"></span>
+    </fieldset>
+
+    <div id="exports" class="exports"></div>
+    <p id="status" role="status"></p>
+    <p class="fine">Runs entirely offline. Your photos never leave your machine. All lettering is original — Archivo Black, Monoton and Lobster under the SIL Open Font License. No Rockstar Games logo, artwork or font.</p>
+  </section>
+
+  <section class="stage" aria-label="Cover preview">
+    <canvas id="poster" width="1080" height="1080" aria-label="The cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
