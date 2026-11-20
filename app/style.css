@@ -1,0 +1,210 @@
+@font-face {
+  font-family: "Archivo Black";
+  src: url("./fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Monoton";
+  src: url("./fonts/Monoton-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lobster";
+  src: url("./fonts/Lobster-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0b0614;
+  color: #f2ecff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.controls {
+  width: 348px;
+  flex: 0 0 348px;
+  padding: 22px 20px 30px;
+  background: #150a24;
+  border-right: 1px solid #2c1845;
+  overflow-y: auto;
+}
+
+.controls h1 {
+  margin: 0 0 4px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.controls h1 span {
+  color: #ff2d95;
+  text-shadow: 0 0 18px rgba(255, 45, 149, 0.8);
+}
+
+.lede {
+  margin: 0 0 18px;
+  color: #c9bce0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+fieldset {
+  border: 1px solid #2c1845;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 0 0 14px;
+}
+legend {
+  padding: 0 6px;
+  color: #ff9ecf;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #d9cdf0;
+}
+label input[type="text"],
+label select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #46306b;
+  border-radius: 7px;
+  background: #1d1032;
+  color: #fff;
+  font-size: 14px;
+}
+label input[type="range"] {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  accent-color: #ff2d95;
+}
+label.file input {
+  margin-top: 4px;
+  color: #c9bce0;
+}
+
+.check { display: flex; align-items: center; gap: 8px; }
+.check input { accent-color: #ff2d95; width: 16px; height: 16px; }
+
+.hint, .fine {
+  color: #9a8bb8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.fine { margin-top: 14px; }
+
+.row { display: flex; gap: 8px; margin: 8px 0; }
+.row button { flex: 1; }
+
+button {
+  padding: 8px 10px;
+  border: 1px solid #46306b;
+  border-radius: 7px;
+  background: #241640;
+  color: #f2ecff;
+  font-size: 13px;
+  cursor: pointer;
+}
+button:hover { border-color: #ff2d95; }
+
+.segment {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.segment button {
+  flex: 1;
+  padding: 7px 4px;
+  font-size: 12px;
+}
+.segment button.active {
+  background: #ff2d95;
+  border-color: #ff2d95;
+  color: #fff;
+  font-weight: 700;
+}
+
+.grades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.grade {
+  height: 44px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+.grade.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 2px #ff2d95;
+}
+
+.exports { display: flex; flex-direction: column; gap: 8px; }
+.export {
+  padding: 12px;
+  background: #ff2d95;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.export:hover { background: #ff4aa5; }
+
+#status { min-height: 18px; color: #7dfcd6; font-size: 13px; }
+
+.off { display: none; }
+
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 500px at 70% 10%, rgba(255, 45, 149, 0.14), transparent 60%),
+    radial-gradient(700px 500px at 20% 90%, rgba(0, 229, 255, 0.10), transparent 60%),
+    #0b0614;
+}
+
+#poster {
+  max-width: 100%;
+  max-height: calc(100vh - 56px);
+  width: auto;
+  height: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px #2c1845;
+  cursor: grab;
+  touch-action: none;
+}
+#poster:active { cursor: grabbing; }
+
+/* Screenshot mode: the poster alone, full frame, no editor chrome. */
+body.shot-cover .controls { display: none; }
+body.shot-cover .stage { padding: 0; }
+body.shot-cover #poster {
+  max-width: 100vw;
+  max-height: 100vh;
+  box-shadow: none;
+}
